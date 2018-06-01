@@ -12,7 +12,7 @@
             }
 
             60% {
-                opacity: 1;
+                opacity: 0.7;
                 transform: translate(30px, 0px)
             }
 
@@ -21,7 +21,7 @@
             }
 
             100% {
-                opacity: 1;
+                opacity: 0.7;
                 transform: translate(0px, 0px)
             }
         }
@@ -32,7 +32,7 @@
                 -webkit-transform: translate(-1500px, 0px)
             }
             60% {
-                opacity: 1;
+                opacity: 0.7;
                 -webkit-transform: translate(30px, 0px)
             }
 
@@ -41,7 +41,7 @@
             }
 
             100% {
-                opacity: 1;
+                opacity: 0.7;
                 -webkit-transform: translate(0px, 0px)
             }
         }
@@ -55,6 +55,7 @@
             display: flex;
             flex-direction: column;
             font-size: 5vh;
+            opacity: 0.7;
         }
 
         .positive {
@@ -79,7 +80,11 @@
         }
     </style>
 </head>
-<body style="display: flex; height: 90vh; flex-direction: column; text-align: center; align-content: center;">
+<body style="display: flex; height: 100vh; flex-direction: column; text-align: center; align-content: center;
+            background-image: url('https://image.freepik.com/free-vector/blue-medical-bright-background-with-electrocardiogram_1017-11129.jpg');
+            background-size: cover;
+            background-position: 50% 50%;
+            ">
 <div style="flex: 0.2; padding-top: 5vh; display: flex; flex-direction: column; font-size: 2.5vh">
     <p style="margin: auto">Клиника: {{ doctor.clinic }}</p>
     <p style="margin: auto">Доктор: {{ doctor.name }}</p>
