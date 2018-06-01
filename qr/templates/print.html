@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vote for {{ doctor.name }}</title>
+    <style>
+        .paper {
+            background: #fff;
+            box-shadow: /* The top layer shadow */ 0 1px 1px rgba(0, 0, 0, 0.15),
+                /* The second layer */ 0 10px 0 -5px #eee,
+                /* The second layer shadow */ 0 10px 1px -4px rgba(0, 0, 0, 0.15),
+                /* The third layer */ 0 20px 0 -10px #eee,
+                /* The third layer shadow */ 0 20px 1px -9px rgba(0, 0, 0, 0.15);
+            /* Padding for demo purposes */
+            padding: 30px;
+        }
+    </style>
+</head>
+<body style="display: flex;">
+<div class="paper" style="flex: 1; max-width: 400px; margin: auto; display: flex; height: 80vh;
+                    flex-direction: column; text-align: center; align-content: center;">
+    <div style="flex: 0.4; display: flex; flex-direction: column; font-size: 4vh">
+        <p style="margin: auto">{{ doctor.clinic }}</p>
+        <p style="margin: auto">{{ doctor.name }}</p>
+    </div>
+    <div style="flex: 0.4">
+        <img src="/qr/{{ doctor.id }}.png">
+    </div>
+    <div style="flex: 0.2; display: flex; flex-direction: column; font-size: 4vh">
+        Пожалуйста, оставьте свой отзыв
+    </div>
+</div>
+</body>
+</html>
