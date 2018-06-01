@@ -85,14 +85,8 @@
     <p style="margin: auto">Доктор: {{ doctor.name }}</p>
     <p style="margin: auto">Дата: {{ date }}</p>
 </div>
-<div class="button positive" style="flex: 0.2" onclick="window.location='/vote/{{ doctor.id }}/3'">
-    <p style="margin: auto">Отлично :)</p>
-</div>
-<div class="button neutral" style="flex: 0.2" onclick="window.location='/vote/{{ doctor.id }}/2'">
-    <p style="margin: auto">Средне</p>
-</div>
-<div class="button negative" style="flex: 0.2" onclick="window.location='/vote/{{ doctor.id }}/1'">
-    <p style="margin: auto">Плохо :(</p>
+<div class="button {% if my_vote.vote == 1 %}positive{% endif %}{% if my_vote.vote == 0 %}neutral{% endif %}{% if my_vote.vote == -1 %}negative{% endif %}" style="flex: 0.6">
+    <p style="margin: auto">Спасибо!!!</p>
 </div>
 <div style="flex: 0.2">
 </div>
