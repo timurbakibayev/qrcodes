@@ -9,9 +9,19 @@ def human(date):
     return str(date.day).zfill(2) + "." + str(date.month).zfill(2) + "." + str(date.year)
 
 
+def index(request):
+    doctors = Doctor.objects.all()
+    return render(request, "index.html", {"doctors": doctors})
+
+
+def add(request):
+    doctors = Doctor.objects.all()
+    return render(request, "add.html", {"doctors": doctors})
+
+
 def qr_view(request, pk):
     doctor = Doctor.objects.get(pk=int(pk))
-    img = qrcode.make('http://google.com/vote/'+str(doctor.id), image_factory=PymagingImage, version=3, border = 2,
+    img = qrcode.make('http://qrvote.kz/vote/'+str(doctor.id), image_factory=PymagingImage, version=3, border = 2,
                       error_correction=qrcode.constants.ERROR_CORRECT_L,
                       box_size=10)
     response = HttpResponse(content_type="image/png")

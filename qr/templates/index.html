@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vote for {{ doctor.name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+        .stars-outer {
+            display: inline-block;
+            position: relative;
+
+        }
+
+        .stars-outer::before {
+            content: "\f005 \f005 \f005 \f005 \f005";
+            color: #22000b;
+            opacity: 0.4;
+        }
+
+        .stars-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+        }
+
+        .stars-inner::before {
+            content: "\f005 \f005 \f005 \f005 \f005";
+            color: magenta;
+        }
+
+        .attribution {
+            font-size: 12px;
+            color: #444;
+            text-decoration: none;
+            text-align: center;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            z-index: -1;
+        }
+
+        .attribution:hover {
+            color: #1fa67a;
+        }
+    </style>
+</head>
+<body style="display: flex; height: 100vh; flex-direction: column; text-align: center; align-content: center;
+            background-image: url('https://image.freepik.com/free-vector/bright-electrocardiogram-background_1017-8767.jpg');
+            background-size: cover;
+            background-position: 50% 50%;
+            ">
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Организация</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Оценка</th>
+            <th scope="col">QR</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for doctor in doctors %}
+            <tr class="doctor{{ doctor.id }}">
+                <td>{{ doctor.clinic }}</td>
+                <td>{{ doctor.name }}</td>
+                <td>
+                    <div class="fas stars-outer">
+                        <div class="fas stars-inner"></div>
+                    </div>
+                </td>
+                <td><a href="/print/{{ doctor.id }}">QR</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-info" onclick="window.location='/add'">Добавить</button>
+</div>
+</div>
+<script language="JavaScript">
+    const ratings = {
+        {% for doctor in doctors %}
+            doctor{{ doctor.id }}: {{ doctor.avg }},
+        {% endfor %}
+    };
+
+    // total number of stars
+    const starTotal = 5;
+
+    for (const rating in ratings) {
+        const starPercentage = (ratings[rating] / starTotal) * 100;
+        const starPercentageRounded = `${(Math.round(starPercentage / 10) * 10)}%`;
+        document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded;
+    }
+</script>
+</body>
+</html>

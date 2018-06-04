@@ -19,6 +19,8 @@ from qrcodes import views
 
 urlpatterns = [
     url('admin/', admin.site.urls),
+    url(r'^$', views.index),
+    url(r'^add$', views.add),
     url(r'^vote/(?P<pk>[0-9]+)$', views.vote_view),
     url(r'^qr/(?P<pk>[0-9]+).png$', views.qr_view),
     url(r'^print/(?P<pk>[0-9]+)$', views.print_view),
