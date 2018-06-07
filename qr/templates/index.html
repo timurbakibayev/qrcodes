@@ -72,6 +72,8 @@
             <th scope="col">Имя</th>
             <th scope="col">Оценка</th>
             <th scope="col">QR</th>
+            <th scope="col">VOTE</th>
+            <th scope="col">INFO</th>
         </tr>
         </thead>
         <tbody>
@@ -85,6 +87,8 @@
                     </div>
                 </td>
                 <td><a href="/print/{{ doctor.id }}">QR</a></td>
+                <td><a href="/vote/{{ doctor.id }}">Отзыв</a></td>
+                <td><a href="/info/{{ doctor.id }}">Инфо</a></td>
             </tr>
         {% endfor %}
         </tbody>

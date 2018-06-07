@@ -15,7 +15,8 @@
             integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
             crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
         .stars-outer {
             display: inline-block;
@@ -66,7 +67,18 @@
             ">
 <div class="container">
     <h1></h1>
-    <button type="button" class="btn btn-info" onclick="window.location='/add'">Добавить Врача</button>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Имя врача</label>
+            <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Комаровский Евгений Олегович">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput2">Наименование клиники</label>
+            <input type="text" class="form-control" name="clinic" id="exampleFormControlInput2" placeholder="Городская детская поликлиника №1">
+        </div>
+        <button type="submit" class="btn btn-info" onclick="window.location='/add'">Добавить Врача</button>
+    </form>
 </div>
 </div>
 <script language="JavaScript">

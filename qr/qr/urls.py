@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^vote/(?P<pk>[0-9]+)$', views.vote_view),
     url(r'^qr/(?P<pk>[0-9]+).png$', views.qr_view),
     url(r'^print/(?P<pk>[0-9]+)$', views.print_view),
-    url(r'^vote/(?P<pk>[0-9]+)/(?P<vote>[1-3]+)$', views.vote_done_view)
+    url(r'^vote/(?P<pk>[0-9]+)/(?P<vote>[1-3]+)$', views.vote_done_view),
+    url(r'^info/(?P<pk>[0-9]+)$', views.info_view),
 ]

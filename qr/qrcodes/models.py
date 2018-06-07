@@ -24,6 +24,7 @@ class Doctor(models.Model):
 
 
 class Vote(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     client_id = models.CharField(max_length=1000)
     vote = models.IntegerField(default=3)
